@@ -1,0 +1,7 @@
+<h3> Sign In </h3>
+
+<%= form_tag sessions_path do %>
+  <%= label_tag :id %>
+  <%= text_field_tag :id, params[:id] %>
+  <%= submit_tag "Sign in" %>
+<% end %>

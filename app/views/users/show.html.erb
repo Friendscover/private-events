@@ -1,3 +1,7 @@
+<% if current_user %>
+  Your logged in with UserID: <%= current_user.id %>
+<% end %>
+
 <% @user.each do |u| %>
   <p>
     <strong><%= u.first_name %></strong>
