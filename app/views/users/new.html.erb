@@ -1,0 +1,6 @@
+<h3> Sign yourself up! </h3>
+<%= form_for @user, method: :post do |form| %>
+  First Name: <%= form.text_field :first_name, placeholder: "Your First Name!" %>
+  Last Name: <%= form.text_field :last_name, placeholder: "Your Last Name!" %>
+  <%= form.submit "Submit" %>
+<% end %>
