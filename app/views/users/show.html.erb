@@ -1,5 +1,5 @@
 <% if current_user %>
-  Your logged in with UserID: <%= current_user.id %>
+  Your logged in as: <strong><%= current_user.first_name %></strong>
   <%= link_to "Sign Out", logout_path %>
 <% else %>
   <%= link_to "Sign In", new_session_path %>
@@ -9,5 +9,6 @@
   <p>
     <strong><%= u.first_name %></strong>
     <%= u.last_name %>
+    <%= u.events.name %>
   </p>
 <% end %>
