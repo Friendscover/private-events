@@ -1,5 +1,8 @@
 <% if current_user %>
   Your logged in with UserID: <%= current_user.id %>
+  <%= link_to "Sign Out", logout_path %>
+<% else %>
+  <%= link_to "Sign In", new_session_path %>
 <% end %>
 
 <% @user.each do |u| %>

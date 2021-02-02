@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
+
+  get 'logout' => 'sessions#destroy'
 end
