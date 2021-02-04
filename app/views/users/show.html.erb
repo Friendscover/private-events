@@ -1,14 +1,19 @@
 <% if current_user %>
   Your logged in as: <strong><%= current_user.first_name %></strong>
   <%= link_to "Sign Out", logout_path %>
+  <%= link_to "Create Event", new_event_path %>
 <% else %>
   <%= link_to "Sign In", new_session_path %>
 <% end %>
 
 <% @user.each do |u| %>
-  <p>
+  <div>
     <strong><%= u.first_name %></strong>
     <%= u.last_name %>
-    <%= u.events.name %>
-  </p>
+    <strong>  | Events: </strong>
+      <% u.events.each do |event| %>
+        <%= link_to event.name, event_path(event) %>
+    <% end %>
+    <div>
+  </div>
 <% end %>

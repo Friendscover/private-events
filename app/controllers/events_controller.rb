@@ -5,12 +5,21 @@ class EventsController < ApplicationController
   
   def create
     @event = Event.new(event_params)
+    @event.creator_id = session[:user_id]
 
     if @event.save
       redirect_to root_url
     else
       render :new
     end
+  end
+
+  def index
+    @event = Event.all
+  end
+
+  def show
+    @event = Event.find(params[:id])
   end
 
   private
