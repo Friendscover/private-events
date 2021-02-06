@@ -5,3 +5,9 @@
   <strong> Date of Happening: </strong><%= @event.date %> <br />
   Info: <%= @event.description %> <br />
 </div>
+
+<p>
+  Attendes: <% @event.attendees.each do |a| %>
+    <%= a.first_name %>
+  <% end %>
+</p>
