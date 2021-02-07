@@ -3,17 +3,31 @@
   <%= link_to "Sign Out", logout_path %>
   <%= link_to "Create Event", new_event_path %>
 <% else %>
-  <%= link_to "Sign In", new_session_path %>
+  <%= link_to "Sign In! | ", new_session_path %>
+  <%= link_to "Sign Up!", new_user_path %>
 <% end %>
+
+<%= link_to "All Events", events_path %>
 
 <% @user.each do |u| %>
   <div>
     <strong><%= u.first_name %></strong>
     <%= u.last_name %>
-    <strong>  | Events: </strong>
-      <% u.events.each do |event| %>
+    <strong>  | Creator of: </strong>
+     <% u.events.each do |event| %>
         <%= link_to event.name, event_path(event) %>
     <% end %>
     <div>
+      Attends upcoming Event: <% u.attended_events.each do |ae| %>
+        <% if ae.date >= DateTime.now.to_s(:number) %>
+          <%= link_to ae.name, event_path(ae) %>
+        <% end %>
+      <% end %><br />
+      Attended: <% u.attended_events.each do |ae| %>
+        <% if ae.date <= DateTime.now.to_s(:number) %>
+          <%= link_to ae.name, event_path(ae) %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>
